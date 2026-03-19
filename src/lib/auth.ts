@@ -21,6 +21,17 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  // CORS stuff
+  trustedOrigins: [
+    "https://feisty-education-production.up.railway.app",
+    "https://socrates.scuffi.dev",
+  ],
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+    },
+  },
   // Session config
   session: {
     cookieCache: {
