@@ -38,6 +38,7 @@ export const auth = betterAuth({
       enabled: true,
       maxAge: 5 * 60,
     },
+    storeSessionInDatabase: true,
   },
   // Add your plugins here
   plugins: [openAPI(), dash(), passkey()],
