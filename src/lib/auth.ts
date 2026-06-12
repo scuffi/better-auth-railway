@@ -5,6 +5,11 @@ import { Redis } from "ioredis";
 import { dash } from "@better-auth/infra";
 import { passkey } from "@better-auth/passkey";
 
+export const trustedOrigins = (process.env.TRUSTED_ORIGINS ?? "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 const redis = new Redis(`${process.env.REDIS_URL}?family=0`)
   .on("error", (err) => {
     console.error("Redis connection error:", err);
@@ -21,11 +26,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  // CORS stuff
-  trustedOrigins: [
-    "https://feisty-education-production.up.railway.app",
-    "https://socrates.scuffi.dev",
-  ],
+  trustedOrigins,
   advanced: {
     defaultCookieAttributes: {
       sameSite: "none",

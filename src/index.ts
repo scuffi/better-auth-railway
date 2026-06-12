@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { auth } from "./lib/auth";
+import { auth, trustedOrigins } from "./lib/auth";
 import { logger } from "hono/logger";
 import { cors } from "hono/cors";
 
@@ -25,10 +25,7 @@ app.get("/health", (c) => {
 app.use(
   "/api/auth/*",
   cors({
-    origin: [
-      "https://feisty-education-production.up.railway.app",
-      "https://socrates.scuffi.dev",
-    ],
+    origin: trustedOrigins,
     credentials: true,
   })
 );

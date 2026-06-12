@@ -16,6 +16,7 @@ Required environment variables:
 - `REDIS_URL` - Connection string for Redis
 - `DATABASE_URL` - Connection string for your database
 - `BETTER_AUTH_SECRET` - Secret key for encryption and security
+- `TRUSTED_ORIGINS` - Comma-separated list of allowed frontend origins (e.g. `https://app.example.com,https://www.example.com`)
 
 ## 💡 Considerations
 - 🔄 I strongly encourage **FORKING THIS REPO** and modifying the config to suit your needs, add other providers, email sending, etc.
