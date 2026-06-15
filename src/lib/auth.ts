@@ -32,6 +32,10 @@ export const auth = betterAuth({
       sameSite: "none",
       secure: true,
     },
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: process.env.BETTER_AUTH_COOKIE_DOMAIN,
+    },
   },
   // Session config
   session: {
